@@ -99,10 +99,10 @@ public class WelcomeUI {
                     setVisible(false);
                     InterfacefunctionUI temp = new InterfacefunctionUI();
                     temp.setVisible(true);
-                    //TODO:open interface UI
                 }else if(WelUICalculation.isSelected()){
                     setVisible(false);
-                    //TODO:open calculater UI
+                    CalculationfunctionUI temp = new CalculationfunctionUI();
+                    temp.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "你必须选择一个选项", "警告", JOptionPane.WARNING_MESSAGE);
                 }

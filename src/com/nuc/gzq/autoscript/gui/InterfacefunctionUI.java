@@ -111,7 +111,7 @@ public class InterfacefunctionUI {
         function_module_type_continue_radio = new JRadioButton();
         function_module_type_discrete_radio = new JRadioButton();
 
-        function_save_position_btn = new JButton("选择文件");
+        function_save_position_btn = new JButton("...");
         Button_OK = new JButton("确定生成");
         Button_Return = new JButton("取消返回");
 
@@ -119,7 +119,7 @@ public class InterfacefunctionUI {
         //Frame初始化
         InfaceUI_Frame.setTitle("Xcos模块接口函数自动生成");
         InfaceUI_Frame.setLayout(new BorderLayout(12,12));
-        InfaceUI_Frame.setBounds(450,20,300,450);
+        InfaceUI_Frame.setBounds(450,20,300,490);
         InfaceUI_Frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //将选项组件放入jpanel_top中
@@ -209,12 +209,12 @@ public class InterfacefunctionUI {
         InfaceUI_Panel_top.add(function_dept);
         InfaceUI_Panel_top.add(function_dept_check);
 
-
-
-
-        //InfaceUI_Panel_top.add(function_author,5);
-       // InfaceUI_Panel_top.add(function_author_text,7);
-
+        function_save_position.setBounds(1,377,110,20);
+        function_save_position_text.setBounds(115,378,100,20);
+        function_save_position_btn.setBounds(220,378,40,20);
+        InfaceUI_Panel_top.add(function_save_position);
+        InfaceUI_Panel_top.add(function_save_position_text);
+        InfaceUI_Panel_top.add(function_save_position_btn);
 
         //将按钮组件嵌入jpanel_bottom
         InfaceUI_Panel_bottom.setLayout(new BorderLayout(12,12));
@@ -237,10 +237,10 @@ public class InterfacefunctionUI {
             if (Button_OK.equals(e.getSource())){
                 //TODO:trans Data to commons
             }else if(Button_Return.equals(e.getSource())){
-                //TODO:unvisible inface and visible Wel
                 setVisible(false);
                 WelcomeUI temp = new WelcomeUI();
                 temp.setVisible(true);
+                InfaceUI_Frame.dispose();
             }else{
                 System.out.println("Can not find button!");
             }
