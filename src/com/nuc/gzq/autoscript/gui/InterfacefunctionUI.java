@@ -1,9 +1,13 @@
 package com.nuc.gzq.autoscript.gui;
 
+import com.nuc.gzq.autoscript.commons.ButtonOp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InterfacefunctionUI {
 
@@ -29,9 +33,6 @@ public class InterfacefunctionUI {
     private JLabel function_depu;
     private JLabel function_dept;
     private JLabel function_save_position;
-    private JLabel function_blank;
-    private JLabel function_blank2;
-    private JLabel function_blank3;
     //文本框
     private JTextField function_name_text;
     private JTextField function_author_text;
@@ -85,9 +86,6 @@ public class InterfacefunctionUI {
         function_depu = new JLabel("模块输出是否与输入相关");
         function_dept = new JLabel("模块输出是否与时间相关");
         function_save_position = new JLabel("脚本文件保存位置");
-        function_blank = new JLabel(" ");
-        function_blank2 = new JLabel(" ");
-        function_blank3 = new JLabel(" ");
 
         function_name_text = new JTextField();
         function_author_text = new JTextField();
@@ -121,11 +119,10 @@ public class InterfacefunctionUI {
         InfaceUI_Frame.setLayout(new BorderLayout(12,12));
         InfaceUI_Frame.setBounds(450,20,300,490);
         InfaceUI_Frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        InfaceUI_Frame.setResizable(false);
 
         //将选项组件放入jpanel_top中
         InfaceUI_Panel_top.setLayout(null);
-        //function_name.setPreferredSize(new Dimension(20,20));
-        //function_name_text.setPreferredSize(new Dimension(20,20));
         function_name.setBounds(1,1,100,20);
         function_name_text.setBounds(102,2,100,20);
         InfaceUI_Panel_top.add(function_name);
@@ -236,6 +233,41 @@ public class InterfacefunctionUI {
         public void actionPerformed(ActionEvent e) {
             if (Button_OK.equals(e.getSource())){
                 //TODO:trans Data to commons
+                Map<String,String> map = new HashMap<>();
+                map.put("function_name",function_name_text.getText());
+                map.put("function_author",function_author_text.getText());
+                map.put("function_save_position", function_save_position_text.getText());
+                map.put("function_cal",function_cal_text.getText());
+                map.put("function_in",function_in_text.getText());
+                map.put("function_in2",function_in2_text.getText());
+                map.put("function_intyp",function_intyp_text.getText());
+                map.put("function_out",function_out_text.getText());
+                map.put("function_out2",function_out2_text.getText());
+                map.put("function_outtyp",function_outtyp_text.getText());
+                map.put("function_evtin",function_evtin_text.getText());
+                map.put("function_evtout",function_evtout_text.getText());
+                if(function_setUI_check.isSelected())
+                    map.put("function_setUI","1");
+                else
+                    map.put("function_setUI","0");
+                if(function_depu_check.isSelected())
+                    map.put("function_depu","1");
+                else
+                    map.put("function_depu","0");
+                if(function_dept_check.isSelected())
+                    map.put("function_dept","1");
+                else
+                    map.put("function_dept","0");
+                if(function_module_type_continue_radio.isSelected() && !function_module_type_discrete_radio.isSelected())
+                    map.put("function_module_type","c");
+                else if(!function_module_type_continue_radio.isSelected() && function_module_type_discrete_radio.isSelected())
+                    map.put("function_module_type","d");
+                else {
+                    //TODO:show Waring
+                    return;
+                }
+                ButtonOp bop = new ButtonOp();
+                bop.Button_action(map);
             }else if(Button_Return.equals(e.getSource())){
                 setVisible(false);
                 WelcomeUI temp = new WelcomeUI();

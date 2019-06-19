@@ -52,6 +52,7 @@ public class CalculationfunctionUI {
         CalcUI_Frame.setLayout(new BorderLayout(12,12));
         CalcUI_Frame.setBounds(450,20,300,150);
         CalcUI_Frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        CalcUI_Frame.setResizable(false);
 
         //将选项组件放入jpanel_top中
         CalcUI_Panel_top.setLayout(null);
@@ -98,10 +99,8 @@ public class CalculationfunctionUI {
                 map.put("function_name",function_name_text.getText());
                 map.put("function_author",function_author_text.getText());
                 map.put("function_save_position", function_save_position_text.getText());
-               //map.size();
                 ButtonOp bop = new ButtonOp();
                 bop.Button_action(map);
-                //System.out.println( map.size());
             }else if(Button_Return.equals(e.getSource())){
                 setVisible(false);
                 WelcomeUI temp = new WelcomeUI();

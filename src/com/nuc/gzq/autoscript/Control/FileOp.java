@@ -4,17 +4,8 @@ public class FileOp {
 
     public FileOp(){}
 
-    public boolean saveFile(){
+    public boolean saveFile(String savePath,String content,String filename){
 
         return true;
     }
-
-    public void produceInterface(){
-
-    }
-
-    public void produceCalculate(){
-
-    }
-
 }

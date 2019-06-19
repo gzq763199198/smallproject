@@ -43,6 +43,7 @@ public class WelcomeUI {
         WelUIFrame.setLayout(new BorderLayout(12,12));
         WelUIFrame.setBounds(200,200,500,250);
         WelUIFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        WelUIFrame.setResizable(false);
         //左上角图标——苏苏~
         WelUIJLabel = new JLabel(new ImageIcon("E:\\北京\\smallproject\\resource\\WelcomeUI_left.png"));
 
