@@ -234,7 +234,6 @@ public class InterfacefunctionUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (Button_OK.equals(e.getSource())){
-                //TODO:trans Data to commons
                 Map<String,String> map = new HashMap<>();
                 if(function_save_position_text.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"必须选择脚本保存位置", "错误", JOptionPane.WARNING_MESSAGE);
@@ -269,7 +268,6 @@ public class InterfacefunctionUI {
                 else if(!function_module_type_continue_radio.isSelected() && function_module_type_discrete_radio.isSelected())
                     map.put("function_module_type","d");
                 else {
-                    //TODO:show Waring
                     JOptionPane.showMessageDialog(null,"必须选择模块类型", "错误", JOptionPane.WARNING_MESSAGE);
                     return;
                 }

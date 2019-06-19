@@ -96,7 +96,6 @@ public class CalculationfunctionUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (Button_OK.equals(e.getSource())){
-                //TODO:trans Data to commons
                 if(function_save_position_text.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"必须选择脚本保存位置", "错误", JOptionPane.WARNING_MESSAGE);
                     return;
