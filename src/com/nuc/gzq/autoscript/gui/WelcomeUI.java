@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class WelcomeUI {
 
@@ -45,8 +46,10 @@ public class WelcomeUI {
         WelUIFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         WelUIFrame.setResizable(false);
         //左上角图标——苏苏~
-        WelUIJLabel = new JLabel(new ImageIcon("E:\\北京\\smallproject\\resource\\WelcomeUI_left.png"));
+        URL base = this.getClass().getResource("WelcomeUI_left.png");
+        WelUIJLabel = new JLabel(new ImageIcon(base));
 
+        //System.out.println(base.toString());
         //将接口函数和计算函数的选择编入按钮组
         WelUIRadioGroup.add(WelUIInterface);
         WelUIRadioGroup.add(WelUICalculation);
