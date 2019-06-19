@@ -91,9 +91,7 @@ public class WelcomeUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(Button_About.equals(e.getSource())){
-
                 JOptionPane.showMessageDialog(null, "本程序由郭志强开发，仅供学习使用", "关于", JOptionPane.WARNING_MESSAGE);
-
             }else if(Button_OK.equals(e.getSource())){
                // SetVisible(false);
                 if(WelUIInterface.isSelected()){

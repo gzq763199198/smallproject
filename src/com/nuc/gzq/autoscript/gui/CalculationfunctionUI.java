@@ -3,6 +3,7 @@ package com.nuc.gzq.autoscript.gui;
 import com.nuc.gzq.autoscript.commons.ButtonOp;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,6 +89,7 @@ public class CalculationfunctionUI {
         //按钮绑定监听
         Button_OK.addActionListener(new CalcButtonListner());
         Button_Return.addActionListener(new CalcButtonListner());
+        function_save_position_btn.addActionListener(new CalcButtonListner());
     }
 
     private final class CalcButtonListner implements ActionListener {
@@ -95,6 +97,10 @@ public class CalculationfunctionUI {
         public void actionPerformed(ActionEvent e) {
             if (Button_OK.equals(e.getSource())){
                 //TODO:trans Data to commons
+                if(function_save_position_text.getText().equals("")){
+                    JOptionPane.showMessageDialog(null,"必须选择脚本保存位置", "错误", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 Map<String,String> map = new HashMap<>();
                 map.put("function_name",function_name_text.getText());
                 map.put("function_author",function_author_text.getText());
@@ -106,6 +112,18 @@ public class CalculationfunctionUI {
                 WelcomeUI temp = new WelcomeUI();
                 temp.setVisible(true);
                 CalcUI_Frame.dispose();
+            }else if(function_save_position_btn.equals(e.getSource())){
+                JFileChooser fileChooser = new JFileChooser();
+                FileSystemView fsv = FileSystemView.getFileSystemView();
+                fileChooser.setCurrentDirectory(fsv.getHomeDirectory());
+                fileChooser.setDialogTitle("请选择要保存的路径...");
+                fileChooser.setApproveButtonText("选择文件夹");
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+                    String choosepath = fileChooser.getSelectedFile().getPath();
+                    function_save_position_text.setText(choosepath+"\\");
+                    System.out.println(choosepath);
+                }
             }else{
                 System.out.println("Can not find button!");
             }

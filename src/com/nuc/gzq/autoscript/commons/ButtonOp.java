@@ -3,6 +3,7 @@ package com.nuc.gzq.autoscript.commons;
 import com.nuc.gzq.autoscript.Control.FileOp;
 import com.nuc.gzq.autoscript.Data.Constants;
 
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class ButtonOp {
             if(map.get("function_cal").equals("")) {
                 content = content + temp.append(co.Infacecontent5).insert(20,co.CalculatePrefix+map.get("function_name"));
             }else{
-                content = content + temp.append(co.Infacecontent5).insert(20,co.CalculatePrefix+map.get("function_cal"));
+                content = content + temp.append(co.Infacecontent5).insert(20,map.get("function_cal"));
             }
             temp.delete(0,temp.length());
             if(map.get("function_in").equals("")) {
@@ -118,7 +119,9 @@ public class ButtonOp {
             temp.delete(0,temp.length());
             System.out.println(content);
         }
-        fop.saveFile(savePath, content, filename);
+        if(fop.saveFile(savePath, content, filename)){
+            JOptionPane.showMessageDialog(null,"函数模板生成成功！", "提示", JOptionPane.WARNING_MESSAGE);
+        }
         return true;
     }
 
